@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth
+}
+
+body {
+  @apply bg-zinc-900 text-zinc-50;
+}
+
+@layer components {
+  .nav-link.active {
+    @apply bg-zinc-50 text-zinc-900 duration-500
+}
+
+  .nav-link {
+    @apply pl-4 p-3 flex items-center gap-4 font-semibold rounded-xl
+  }
+
+  .nav-link .active-box {
+    @apply absolute bg-zinc-50 rounded-lg -z-10 transition-all duration-500
+  }
+}

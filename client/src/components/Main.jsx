@@ -100,7 +100,7 @@ const Main = () => {
         </label>
         <pre
           id="result"
-          className="p-2 m-2 h-1/3 w-11/12 text-sm text-gray-900 bg-zinc-200 rounded-lg border"
+          className="p-2 m-2 h-1/3 w-11/12 text-sm text-gray-900 bg-zinc-200 rounded-lg border text-wrap"
         >
           {result || "Generated SQL will appear here..."}
         </pre>

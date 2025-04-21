@@ -111,6 +111,10 @@ const Dashboard = () => {
 
     return (
         <div className="p-4">
+            <div className="mb-8">
+                <h1 className="text-3xl font-bold mb-2 text-white">Database Explorer</h1>
+                <p className="text-zinc-400">Select a database to view its tables</p>
+            </div>
             {useDbStatus === 'success' && (
                 <div className="mb-4 p-2 bg-green-100 text-green-800 rounded">
                     Successfully switched to database: {selectedDb}
@@ -127,12 +131,17 @@ const Dashboard = () => {
                 {databases.map((dbName, index) => (
                     <div 
                         key={index} 
-                        className={`mt-8 ml-8 border border-zinc-500 w-1/5 p-4 rounded-md shadow hover:opacity-80 cursor-pointer transition-opacity
-                            ${selectedDb === dbName ? 'bg-blue-400' : 'bg-blue-300'}
+                        className={`mt-8 ml-8 border w-1/5 p-4 rounded-md shadow hover:opacity-80 cursor-pointer transition-opacity flex items-center
+                            ${selectedDb === dbName ? 'bg-gradient-to-t from-sky-400 via-45% via-sky-400/40 to-100% border-t border-r border-white' : 'bg-gradient-to-t from-sky-400 via-45% via-sky-400/40 to-100% border-zinc-500'}
                             ${useDbStatus === 'loading' && selectedDb === dbName ? 'animate-pulse' : ''}
                         `}
                         onClick={() => handleDbSelect(dbName)}
                     >
+                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
+                                    <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
+                                    <path d="M17 5c0 1.657-3.134 3-7 3S3 6.657 3 5s3.134-3 7-3 7 1.343 7 3z" />
+                                </svg>
                         <div className="font-semibold">{dbName}</div>
                         {selectedDb === dbName && useDbStatus === 'loading' && (
                             <div className="text-xs mt-1">Switching...</div>
@@ -157,8 +166,11 @@ const Dashboard = () => {
                                 tables.map((table, index) => (
                                     <div 
                                         key={index} 
-                                        className="mt-4 ml-4 border border-zinc-500 w-1/5 p-4 rounded-md shadow hover:opacity-80 cursor-pointer transition-opacity bg-gray-700"
+                                        className="mt-4 ml-4 border border-zinc-500 w-1/5 p-4 rounded-md shadow hover:opacity-80 cursor-pointer transition-opacity bg-gray-700 flex items-center"
                                     >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-zinc-400" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fillRule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clipRule="evenodd" />
+                                        </svg>
                                         <div className="font-semibold">{table}</div>
                                     </div>
                                 ))

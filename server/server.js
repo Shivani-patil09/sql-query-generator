@@ -55,14 +55,20 @@ const createConnection = (config, callback) => {
   });
 };
 
-// Establish default connection when server starts
-createConnection(DEFAULT_CONNECTION, (err) => {
-  if (err) {
-    console.error("Failed to establish default connection:", err.message);
-  } else {
-    console.log("Default connection established successfully");
-  }
+// Start the server and automatically connect
+const server = app.listen(5001, () => {
+  console.log("Server running on port 5001");
+  
+  // Automatically connect to default database
+  createConnection(DEFAULT_CONNECTION, (err) => {
+    if (err) {
+      console.error("Automatic connection failed:", err.message);
+    } else {
+      console.log("Automatically connected to default MySQL server");
+    }
+  });
 });
+
 
 // API Endpoints
 
